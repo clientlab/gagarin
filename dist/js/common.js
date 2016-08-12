@@ -20,6 +20,10 @@ jQuery(function($) {
             993:{items:5}
         }
     });
+    $(".catalog .owl-carousel").owlCarousel({
+        items:1,
+        dots:false,
+    });
     // nav
     $('.slider_nav').click(function() {
         if ($(this).hasClass('right') == true){

@@ -73,6 +73,9 @@
     .nav_bar .navigation{
         display: none;
     }
+    .mobile_nav{
+    	display: inline-block !important;
+    }
     .main header h1{
         font-size: 36px;
         text-align: center;
