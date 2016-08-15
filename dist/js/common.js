@@ -24,6 +24,15 @@ jQuery(function($) {
         items:1,
         dots:false,
     });
+    $("#card .owl-carousel").owlCarousel({
+        responsiveClass:true,
+        dots:false,
+        responsive:{
+            0:{items:1},
+            768:{items:2},
+            993:{items:2}
+        }
+    });
     // nav
     $('.slider_nav').click(function() {
         if ($(this).hasClass('right') == true){
@@ -93,4 +102,44 @@ $('.banner .nav_slider ul li').click(function () {
         bg_slide(index);
     }
 });
+
+$('.catalog .engine input, .catalog .body input, .catalog .mark input').click(function () {
+    $(this).attr('checked', !$(this).attr('checked'));
+})
+$('.catalog .mark .input').each(function () {
+    if($(this).index() > 8){
+        $(this).css('display', 'none');
+    }
+});
+$('.catalog .mark .view_all').click(function () {
+    $('.catalog .mark .input').css('display', 'inline-block');
+    $(this).css('display','none');
+})
+$('.catalog .filter a').click(function () {
+    event.preventDefault();
+    $('.catalog .filter .price input, .catalog .filter .years input').val('');
+    $('.catalog .filter input[type=checkbox]').attr('checked', false);
+})
+var myMap;
+ymaps.ready(init);
+function init () {
+    myMap = new ymaps.Map("YanMap", {
+        center: [43.28061610, 76.91219323],
+        zoom: 16,
+        //  controls: ['smallMapDefaultSet'],
+    });
+    myMap.behaviors.disable(['scrollZoom']);
+    myMap.controls.add('zoomControl', { left: 11, top: 32 })
+
+
+    myPlacemark = new ymaps.Placemark(
+        [43.28137644, 76.91263848],
+        {
+
+            hintContent: ''
+        }, {
+            iconLayout: 'default#image',
+        });
+    myMap.geoObjects.add(myPlacemark);
+};
 

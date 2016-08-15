@@ -2,6 +2,12 @@
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
+    footer .vk{
+        width: 105px;
+    }
+    footer .vk img{
+        padding-right: 5px;
+    }
 }
 
 /* Medium Devices, Desktops */
@@ -41,15 +47,47 @@
     .about button{
         margin: 59px 0 100px;
     }
-    footer .block .col{
-        padding: 0;
+    #catalog .filter button{
+        margin-right: 15px;
     }
-    footer .block .col:nth-of-type(2){
-        padding-left: 20px;
+    #catalog .subscribe{
+        display: none;
+    }
+    #catalog .filter{
+        padding-bottom: 29px;
+        margin-bottom: 29px;
+        border-bottom: 1px solid #f0f1f1;
+    }
+    #catalog .filter button{
+        margin-bottom: 0px;
+    }
+    footer .vk{
+        width: 120px;
+        padding-left: 15px;
+        margin: 0 auto;
     }
     footer .right{
-        position: relative;
-        left: -25px;
+        float: left;
+    }
+    footer .vk, footer .right{
+        margin-top: 20px;
+    }
+    #card .actions_block a{
+        display: inline-block;
+        width: 100%;
+    }
+    #card .specifications .block{
+        margin-top: 30px;
+        background: url("../img/staff/car.png") 30px center no-repeat, #fbf5e5;
+        text-align: left;
+    }
+    #card .specifications .block img{
+        display: none;
+    }
+    #card .specifications .block h3, #card .specifications .block p{
+        display: inline-block;
+        padding-left: 160px;
+        text-align: left;
     }
 }
 
@@ -74,7 +112,7 @@
         display: none;
     }
     .mobile_nav{
-    	display: inline-block !important;
+        display: inline-block !important;
     }
     .main header h1{
         font-size: 36px;
@@ -105,6 +143,42 @@
     }
     .partners{
         display: none;
+    }
+    #catalog .block .description{
+        background: #f6f7f8;
+        padding: 30px;
+    }
+    footer p:first-of-type{
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    footer .vk{
+        width: 120px;
+        padding-left: 0px;
+        margin-left: 0px;
+    }
+    footer .right{
+        float: left;
+    }
+    footer .right p{
+        margin-bottom: 0px;
+    }
+    footer .vk, footer .right{
+        margin-top: 20px;
+    }
+    #card .actions_block .block{
+        margin-top: 30px;
+    }
+    #card .specifications .block{
+        margin-top: 30px;
+        background: url("../img/staff/car.png") 30px top no-repeat, #fbf5e5;
+        text-align: left;
+    }
+    #card .specifications .block h3, #card .specifications .block p{
+        padding-left: 0px;
+    }
+    #card .specifications .block h3{
+        padding-top: 60px;
     }
 }
 
