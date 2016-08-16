@@ -11,7 +11,7 @@
 <div class="content">
     <div class="nav_bar">
         <div class="container">
-            <div class="logo"></div>
+            <div class="logo"><a href=""></a></div>
             <div class="navigation">
                 <nav>
                     <ul>
@@ -48,22 +48,48 @@
                                 <option value="Shkoda">Shkoda</option>
                                 <option value="Subari">Subari</option>
                             </select>
-                            <select name="model" class="model">
+                            <select name="model" id="model" class="model" multiple="multiple">
                                 <option value="Civic">Civic</option>
                                 <option value="Accord" selected>Accord</option>
                                 <option value="Fabia">Fabia</option>
                                 <option value="Legasy">Legasy</option>
                             </select>
-                            <select name="years" class="years">
-                                <option value="1945">1945-2000</option>
-                                <option value="2000">2000-2013</option>
-                                <option value="2013" selected>2013-2016</option>
-                            </select>
-                            <select name="cost" class="cost">
-                                <option value="2000">100 000 - 220 000 &#8381;</option>
-                                <option value="2000">220 000 - 540 000 &#8381;</option>
-                                <option value="2000">540 000 - 2 000 000 &#8381;</option>
-                            </select>
+                                <div class="years">
+                                    <div class="left">
+                                        <select name="years" class="years by">
+                                            <option value="1995">1995</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1997" selected>1997</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1999">1999</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                            <option value="2003">2003</option>
+                                            <option value="2004">2004</option>
+                                            <option value="2005">2005</option>
+                                        </select>
+                                    </div><!--
+                                 --><label>&#8212;</label><!--
+                                 --><div class="right">
+                                        <select name="years" class="years too">
+                                            <option value="1995">1995</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1997" selected>1997</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1999">1999</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                            <option value="2003">2003</option>
+                                            <option value="2004">2004</option>
+                                            <option value="2005">2005</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            <input name="cost" class="cost by" placeholder="цена от &#8381;"><!--
+                         --><label>&#8212;</label><!--
+                         --><input name="cost" class="cost too" placeholder="цена до &#8381;">
                             <button type="submit">Поехали!</button>
                             <a href="">Показать весь каталог</a>
                         </form>
@@ -78,19 +104,19 @@
                 <div class="col-md-4 col-sm-4">
                     <div class="block">
                         <div class="icon"><img src="img/triggers/1.png" alt=""></div><!--
-                     --><div class="description"><p>Гарантированное качество продаваемого автомобиля</p></div>
+                     --><div class="description"><p>Гарантированное качество<br class="screen_br"> продаваемого автомобиля</p></div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="block">
                         <div class="icon"><img src="img/triggers/2.png" alt=""></div><!--
-                     --><div class="description"><p>Продажа и оформление в течение 1 часа</p></div>
+                     --><div class="description"><p>Продажа и оформление<br class="screen_br"> в течение 1 часа</p></div>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="block">
                         <div class="icon"><img src="img/triggers/3.png" alt=""></div><!--
-                     --><div class="description"><p>Возврат автомобиля в течение 48 часов</p></div>
+                     --><div class="description"><p>Возврат автомобиля<br class="screen_br"> в течение 48 часов</p></div>
                     </div>
                 </div>
             </div>
@@ -314,8 +340,8 @@
                         <p>Это новый и качественный подход к реализации транспортных
                             средств. Это самый широкий ассортимент автомобилей и
                             высокое качество предоставляемых услуг.</p>
-                        <p>Если вы продаёте или покупаете автомобиль, добро
-                            пожаловать в GAGARIN!</p>
+                        <p><b>Если вы продаёте или покупаете автомобиль, добро
+                            пожаловать в GAGARIN!</b></p>
                     </div>
                 </div>
             </div>
@@ -443,6 +469,7 @@
             </div>
         </div>
     </footer>
+</div>
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv/es5-shim.min.js"></script>

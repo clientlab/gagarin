@@ -8,6 +8,12 @@
     footer .vk img{
         padding-right: 5px;
     }
+    .feedback .block .manager{
+        padding: 15px 15px 30px;
+    }
+    .feedback .block .manager .description{
+        width: 149px;
+    }
 }
 
 /* Medium Devices, Desktops */
@@ -28,9 +34,6 @@
     }
     .feedback .block .comment{
         min-height: 230px;
-    }
-    .feedback .description{
-
     }
     .feedback .description{
         max-width: 170px;
@@ -89,6 +92,21 @@
         padding-left: 160px;
         text-align: left;
     }
+    #card .buy_test{
+        padding: 40px 0;
+    }
+    #card .buy_test{
+        margin-bottom: 20px;
+    }
+    #card .buy_test form{
+        margin-top: 0px;
+    }
+    #catalog .catalog .filter select, #catalog .catalog .filter input, #catalog .catalog .filter .select{
+        max-width: 100%;
+    }
+    .dropdown-menu{
+        margin-top: 0 !important;
+    }
 }
 
 /* Small Devices, Tablets */
@@ -108,8 +126,53 @@
     .owl-carousel{
         width: 100% !important;
     }
+    .nav_bar .navigation.open{
+        height: auto;
+    }
     .nav_bar .navigation{
+        display: block;
+        position: absolute;
+        right: 15px;
+        overflow: hidden;
+        transition: all 0.5s ease-out;
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    .nav_bar .navigation.open{
+        transform: scaleY(1);
+    }
+    .nav_bar .navigation ul{
+        position: relative;
+        width: 160px;
+        background: #f87402;
+    }
+    .nav_bar .navigation nav ul li{
+        width: 100%;
+        height: 47px;
+        display: block;
+        padding-left: 0px !important;
+        margin-left: 0 !important;
+        font-size: 18px;
+        background: #f87402;
+    }
+    .nav_bar .navigation nav ul li:hover{
+        background: #4b4b4b;
+    }
+    .nav_bar .navigation nav ul li.active{
+        background: #4b4b4b;
+    }
+    .nav_bar .navigation li:before{
         display: none;
+    }
+    .nav_bar .navigation nav ul li a{
+        color: #fff;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding-left: 15px
+    }
+    .nav_bar .navigation nav ul li:hover a{
+        color: #fff !important;
     }
     .mobile_nav{
         display: inline-block !important;
@@ -128,6 +191,7 @@
     .main .form{
         margin-top: 25px;
         margin-bottom: 29px;
+        float: none;
     }
     .triggers{
         display: none;
@@ -148,7 +212,7 @@
         background: #f6f7f8;
         padding: 30px;
     }
-    footer p:first-of-type{
+    footer .left p{
         text-align: left;
         margin-bottom: 20px;
     }
@@ -166,19 +230,22 @@
     footer .vk, footer .right{
         margin-top: 20px;
     }
+    #card header h1{
+        margin-top: 20px;
+    }
     #card .actions_block .block{
         margin-top: 30px;
     }
     #card .specifications .block{
         margin-top: 30px;
-        background: url("../img/staff/car.png") 30px top no-repeat, #fbf5e5;
+        background: url("../img/staff/car.png") 20px 20px no-repeat, #fbf5e5;
         text-align: left;
     }
     #card .specifications .block h3, #card .specifications .block p{
         padding-left: 0px;
     }
     #card .specifications .block h3{
-        padding-top: 60px;
+        padding-top: 80px;
     }
 }
 

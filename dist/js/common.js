@@ -1,5 +1,5 @@
 jQuery(function($) {
-    $(".feedback .owl-carousel,.blog .owl-carousel, .fire_offer .owl-carousel").owlCarousel({
+    $(".feedback .owl-carousel, .fire_offer .owl-carousel").owlCarousel({
         responsiveClass:true,
         dots:true,
         dotsEach: true,
@@ -9,9 +9,17 @@ jQuery(function($) {
             993 : {items:3}
         }
     });
+    $('.blog .owl-carousel').owlCarousel({
+        responsiveClass:true,
+        dots:false,
+        responsive:{
+            0 : {items:1},
+            600 : {items:2},
+            993 : {items:3}
+        }
+    });
     $(".partners .owl-carousel").owlCarousel({
-        dots:true,
-        dotsEach: true,
+        dots:false,
         responsiveClass:true,
         responsive:{
             0:{items:1},
@@ -34,6 +42,8 @@ jQuery(function($) {
         }
     });
     // nav
+    $('#card .active .block:eq(0)').css('float', 'left');
+    $('#card .active .block:eq(1)').css('float', 'right')
     $('.slider_nav').click(function() {
         if ($(this).hasClass('right') == true){
             side = 'next';
@@ -41,8 +51,9 @@ jQuery(function($) {
             side = 'prev';
         };
         $(this).siblings('.owl-carousel').trigger(side+'.owl.carousel');
-        //owl.trigger('next.owl.carousel');
-    })
+        $('#card .active .block:eq(0)').css('float', 'left');
+        $('#card .active .block:eq(1)').css('float', 'right')
+    });
 
     $('.mobile_nav').click(function(){
         $('.mobile_nav .action_block').toggleClass('animate_open animate_close')
@@ -54,6 +65,7 @@ jQuery(function($) {
     var delay = 500;
     $(".mobile_nav").on('click', function () {
         if ($(this).hasClass('state_1') && $(this).hasClass('state_2')) {
+            $('.nav_bar .navigation').removeClass('open');
             $(".mobile_nav").removeClass('state_2');
             setTimeout(function() {
                 $(".mobile_nav").removeClass('state_1');
@@ -63,7 +75,80 @@ jQuery(function($) {
             setTimeout(function() {
                 $(".mobile_nav").addClass('state_2');
             }, delay)
+            $('.nav_bar .navigation').addClass('open');
         }
+    });
+
+    //select
+    $('select.brand, #mark').multiselect({
+        maxHeight: 200,
+        buttonWidth: '100%',
+        buttonClass: 'select',
+        disableIfEmpty: true,
+        onDropdownShow: function(event) {
+            var menu = $(event.currentTarget).find(".dropdown-menu");
+            var width = menu.parent().width();
+            menu.css("width", width);
+        },
+        nonSelectedText: 'Выберете марку',
+        allSelectedText: 'Выбрано всё',
+        nSelectedText: 'вариантов выбранно',
+    });
+    $('select.model, #model').multiselect({
+        maxHeight: 200,
+        buttonWidth: '100%',
+        buttonClass: 'select',
+        disableIfEmpty: true,
+        onDropdownShow: function(event) {
+            var menu = $(event.currentTarget).find(".dropdown-menu");
+            var width = menu.parent().width();
+            menu.css("width", width);
+        },
+        nonSelectedText: 'Выберете модель',
+        allSelectedText: 'Выбрано всё',
+        nSelectedText: 'вариантов выбранно',
+    });
+    $('.years select').multiselect({
+        maxHeight: 200,
+        buttonWidth: '100%',
+        buttonClass: 'select',
+        disableIfEmpty: true,
+        onDropdownShow: function(event) {
+            var menu = $(event.currentTarget).find(".dropdown-menu");
+            var width = menu.parent().width();
+            menu.css("width", width);
+        },
+        nonSelectedText: 'Выберете год',
+        allSelectedText: 'Выбрано всё',
+        nSelectedText: 'вариантов выбранно',
+    });
+    $('.body select').multiselect({
+        maxHeight: 200,
+        buttonWidth: '100%',
+        buttonClass: 'select',
+        disableIfEmpty: true,
+        onDropdownShow: function(event) {
+            var menu = $(event.currentTarget).find(".dropdown-menu");
+            var width = menu.parent().width();
+            menu.css("width", width);
+        },
+        nonSelectedText: 'Кузов',
+        allSelectedText: 'Выбрано всё',
+        nSelectedText: 'вариантов выбранно',
+    });
+    $('.engine select').multiselect({
+        maxHeight: 200,
+        buttonWidth: '100%',
+        buttonClass: 'select',
+        disableIfEmpty: true,
+        onDropdownShow: function(event) {
+            var menu = $(event.currentTarget).find(".dropdown-menu");
+            var width = menu.parent().width();
+            menu.css("width", width);
+        },
+        nonSelectedText: 'Двигатель',
+        allSelectedText: 'Выбрано всё',
+        nSelectedText: 'вариантов выбранно',
     });
 });
 
@@ -80,6 +165,7 @@ $(window).resize(setBgHeight);
 $('.banner .slide_img div').each(function () {
     $('.banner .nav_slider ul').append('<li></li>');
 });
+$('.banner .nav_slider ul li:eq(0)').addClass('active');
 function bg_slide(index) {
     var element = '.banner .slide_img div:eq('+index+')',
         url = "url(" +  $(element).data('background') + ")";
@@ -105,15 +191,6 @@ $('.banner .nav_slider ul li').click(function () {
 
 $('.catalog .engine input, .catalog .body input, .catalog .mark input').click(function () {
     $(this).attr('checked', !$(this).attr('checked'));
-})
-$('.catalog .mark .input').each(function () {
-    if($(this).index() > 8){
-        $(this).css('display', 'none');
-    }
-});
-$('.catalog .mark .view_all').click(function () {
-    $('.catalog .mark .input').css('display', 'inline-block');
-    $(this).css('display','none');
 })
 $('.catalog .filter a').click(function () {
     event.preventDefault();
