@@ -6,7 +6,6 @@ jQuery(function($) {
         dotsEach: true,
         loop:false,
         rewind: true,
-        margin: 15,
         responsive:{
             0 : {items:1},
             600 : {items:2},
@@ -63,20 +62,6 @@ jQuery(function($) {
             993: {items: 6},
         }
     });
-    $(".banner .owl-carousel").owlCarousel({
-        items:1,
-        dots:true,
-        dotsEach: true,
-    });
-
-    $('.banner img').each(function () {
-       var src = $(this).attr('src'),
-           url = 'url('+src+')',
-           bg = $(this).parents('.bg');
-        console.log(url);
-        bg.css('background-image',url);
-    });
-    $('.banner .owl-dots').wrapAll('<div class="container">');
 
     $('.slider .preview .owl-carousel .image').click(function () {
         var index = $(this).parents('.owl-item').index(),
@@ -120,7 +105,7 @@ jQuery(function($) {
 
 
     //catalog photo link
-    $('.catalog .image .owl-item img').click(function () {
+    $('.catalog .image img').click(function () {
         var elem = $(this).parents('.image').parent().siblings().find('a').attr('href');
         window.open(elem);
     });
@@ -175,24 +160,20 @@ jQuery(function($) {
     });
 
     //select
-    $('select.brand, #mark, .years').each(function () {
+    $('select.brand, #mark').each(function () {
         $(this)[0].selectedIndex = "-1";
     });
 
 
     var options = [
-        {label: 'Option 1', title: 'Option 1', value: '1'},
+        {label: 'Option 1', title: 'Option 1', value: '1', selected: true},
         {label: 'Option 2', title: 'Option 2', value: '2'},
-        {label: 'Option 3', title: 'Option 3', value: '3'},
+        {label: 'Option 3', title: 'Option 3', value: '3', selected: true},
         {label: 'Option 4', title: 'Option 4', value: '4'},
         {label: 'Option 5', title: 'Option 5', value: '5'},
-        {label: 'Option 6', title: 'Option 6', value: '6'}
+        {label: 'Option 6', title: 'Option 6', value: '6', disabled: true}
     ];
 
-    function changeColor(option) {
-        var elem = option.parent().siblings('.btn-group').children('button');
-        elem.css('color','#4b4b4b');
-    }
     $('select.brand, #mark').multiselect({
         maxHeight: 200,
         buttonWidth: '100%',
@@ -202,11 +183,11 @@ jQuery(function($) {
             var width = menu.parent().width();
             menu.css("width", width);
         },
-        nonSelectedText: 'Марка автомобиля',
+        nonSelectedText: 'Выберете марку',
         allSelectedText: 'Выбрано всё',
         nSelectedText: 'вариантов выбранно',
-        onChange: function(option) {
-            changeColor(option);
+        onChange: function() {
+            console.log($('select.brand, #mark').val());
             $('select.model, #model').multiselect('enable');
             $('select.model, #model').multiselect('dataprovider', options);
         }
@@ -224,15 +205,12 @@ jQuery(function($) {
         nonSelectedText: 'Выберете марку',
         allSelectedText: 'Выбрано всё',
         nSelectedText: 'вариантов выбранно',
-        disabledText: 'Модели',
+        disabledText: 'Выберете модель',
         includeSelectAllOption: true,
         selectAllText: 'Выбрать всё',
-        onChange: function(option) {
-            changeColor(option);
-        }
     });
     $('select.model, #model').multiselect('disable');
-    $('.years select.by').multiselect({
+    $('.years select').multiselect({
         maxHeight: 200,
         buttonWidth: '100%',
         buttonClass: 'select',
@@ -241,29 +219,9 @@ jQuery(function($) {
             var width = menu.parent().width();
             menu.css("width", width);
         },
-        nonSelectedText: 'Год от',
+        nonSelectedText: 'Выберете год',
         allSelectedText: 'Выбрано всё',
         nSelectedText: 'вариантов выбранно',
-        onChange: function(option) {
-            changeColor(option);
-        }
-    });
-    $('.years select.too').multiselect({
-        maxHeight: 200,
-        buttonWidth: '100%',
-        buttonClass: 'select',
-        onDropdownShow: function(event) {
-            var menu = $(event.currentTarget).find(".dropdown-menu");
-            var width = menu.parent().width();
-            menu.css("width", width);
-        },
-        nonSelectedText: 'Год до',
-        allSelectedText: 'Выбрано всё',
-        disabledText: 'Год до',
-        nSelectedText: 'вариантов выбранно',
-        onChange: function(option) {
-            changeColor(option);
-        }
     });
     $('.body select').multiselect({
         maxHeight: 200,
@@ -279,9 +237,6 @@ jQuery(function($) {
         nSelectedText: 'вариантов выбранно',
         includeSelectAllOption: true,
         selectAllText: 'Выбрать всё',
-        onChange: function(option) {
-            changeColor(option);
-        }
     });
     $('.engine select').multiselect({
         maxHeight: 200,
@@ -297,9 +252,6 @@ jQuery(function($) {
         nSelectedText: 'вариантов выбранно',
         includeSelectAllOption: true,
         selectAllText: 'Выбрать всё',
-        onChange: function(option) {
-            changeColor(option);
-        }
     });
     //Catalog reset filter value
     $('.catalog .filter a.reset').on('click', function() {
@@ -309,6 +261,45 @@ jQuery(function($) {
         $('select.brand, #mark').each(function () {
             $(this)[0].selectedIndex = "-1";
         });
+    });
+
+
+
+
+    //Banner background slider
+
+    function setBgHeight() {
+        $('.banner .bg_slide').css({
+            'height': $('.banner').height() + 'px'
+        });
+    };
+    setBgHeight();
+    $(window).resize(setBgHeight);
+    $('.banner .slide_img div').each(function () {
+        $('.banner .nav_slider ul').append('<li></li>');
+    });
+    $('.banner .nav_slider ul li:eq(0)').addClass('active');
+    function bg_slide(index) {
+        var element = '.banner .slide_img div:eq('+index+')',
+            url = "url(" +  $(element).data('background') + ")";
+        $('.banner .bg_slide').css('background-image', url);
+        $('.banner .bg_slide').animate({
+            right: '0%',
+        }, 1000, function () {
+            $('.banner').css('background-image', url);
+            $('.banner .bg_slide').css('right', '-100%')
+        } );
+    };
+    $('.banner .nav_slider ul li').click(function () {
+        if ($(this).hasClass('active')){
+            return
+        } else{
+            var index = $(this).index();
+            $('.banner .nav_slider ul li').removeClass('active');
+            $(this).addClass('active');
+            setBgHeight();
+            bg_slide(index);
+        }
     });
 });
 
@@ -359,38 +350,22 @@ function overflow() {
 function closePopup() {
     overflow();
     $('#popup').css('display', 'none');
-    $('#popup .modal-content .modal-img').css('display','none');
-    $('#popup .modal-content .modal-form form').css('display','none');
-    $('#popup .modal-content .modal-form .thx').css('display','none');
 };
-function displayPopup() {
+function displayPopup(url) {
+    overflow();
+    $('#popup .modal-content img').attr('src',url);
     $('#popup').css('display', 'flex');
 };
 $('#card .slider .block').click(function () {
     var url = $(this).children('img').attr('src');
-    $('#popup .modal-content .modal-img').css('display','block');
-    $('#popup .modal-content .modal-img img').attr('src',url);
-    overflow();
-    displayPopup();
-});
-$('.popup_open').click(function () {
-    event.preventDefault();
-    $('#popup .modal-content .modal-form').css('display','block');
-    $('#popup .modal-content .modal-form form').css('display','block');
-    overflow();
-    displayPopup();
+    displayPopup(url);
 });
 $('#popup').click(function () {
     if ($(event.target).closest("#popup .modal-content").length) return;
     closePopup();
     event.stopPropagation();
 });
-function thx() {
-    $('#popup .modal-content .modal-form').css('display','block');
-    $('#popup .modal-content .modal-form form').css('display','none');
-    $('#popup .modal-content .modal-form .thx-1').css('display','block');
-    displayPopup();
-};
+
 
 //error img
 $('img').error(function(){
