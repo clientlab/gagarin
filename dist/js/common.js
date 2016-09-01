@@ -395,6 +395,11 @@ function thx() {
 //error img
 $('img').error(function(){
     $(this).attr('src', 'img/staff/error.png');
-})
+});
+function imgError(image) {
+    image.onerror = "";
+    image.src = "img/staff/error.png";
+    return true;
+};
 
 
